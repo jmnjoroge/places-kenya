@@ -1,0 +1,15 @@
+{
+  "name": "places",
+  "version": "1.0.0",
+  "description": "API listing places in kenya from counties to their wards",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "places",
+    "kenya"
+  ],
+  "author": "John Muiruri",
+  "license": "ISC"
+}
