@@ -18,6 +18,8 @@ const findPlace = (county, subcounty = -1, ward = -1) => {
   //county name
   const c = listCounties()[county - 1];
   const subcounties = listSubCounties(c);
+
+  //check if the subcounty index is valid else just return the county
   if (subcounty <= 0 || subcounty > subcounties.length) return c;
 
   //subcounty name
@@ -50,7 +52,6 @@ const findStrPlace = placeStr => {
       break;
   }
 
-  //   return location;
   return findPlace(...location);
 };
 
@@ -61,13 +62,25 @@ const indexPlaces = (countyIndex, subcountyIndex) => {
   let places = [];
 
   const allCounties = listCounties();
+  //check if they want to index a specific county
   const indexInCounty = countyIndex && countyIndex < allCounties.length && countyIndex > 0;
+
+  //list of counties to index
   const counties = indexInCounty ? [allCounties[countyIndex - 1]] : allCounties;
 
   counties.forEach((county, c) => {
     const allSubcounties = listSubCounties(county);
+
+    //check if they want to index a specific subcounty
     const indexInSubcounty = subcountyIndex && subcountyIndex < allSubcounties.length && subcountyIndex > 0;
+
+    //list of subcounties to index
     const subcounties = indexInSubcounty ? [allSubcounties[subcountyIndex - 1]] : allSubcounties;
+
+    /**update the county index
+     * (add one since index starts from zero and county numbers start from one,
+     * or add the index of the county being indexed)
+     * */
     c = c + indexInCounty ? countyIndex : 1;
 
     if (subcounties.length <= 0) {
