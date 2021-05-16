@@ -55,8 +55,6 @@ const findStrPlace = placeStr => {
   return findPlace(...location);
 };
 
-const checkIsALocation = locationStr => {};
-
 /**Index the places as key value pair of the ward,subcounty,county indexes */
 const indexPlaces = (countyIndex = 0, subcountyIndex = 0) => {
   let places = [];
@@ -67,7 +65,6 @@ const indexPlaces = (countyIndex = 0, subcountyIndex = 0) => {
 
   //list of counties to index
   const counties = indexInCounty ? [allCounties[countyIndex - 1]] : allCounties;
-  // console.log(`counties`, counties);
 
   counties.forEach((county, c) => {
     const allSubcounties = listSubCounties(county);
@@ -77,7 +74,6 @@ const indexPlaces = (countyIndex = 0, subcountyIndex = 0) => {
 
     //list of subcounties to index
     const subcounties = indexInSubcounty ? [allSubcounties[subcountyIndex - 1]] : allSubcounties;
-    // console.log(`subcounties`, subcounties);
 
     /**update the county index
      * (add one since index starts from zero and county numbers start from one,
@@ -92,12 +88,9 @@ const indexPlaces = (countyIndex = 0, subcountyIndex = 0) => {
         s = s + (indexInSubcounty ? subcountyIndex : 1);
 
         const wards = listWards(county, subcounty);
-        // console.log(`wards`, wards);
-
         if (wards.length <= 0) {
           places[`${c},${s}`] = `${subcounty},${county}`;
         } else {
-          // console.log(wards);
           listWards(county, subcounty).forEach((ward, w) => {
             w = w + 1;
             places[`${c},${s},${w}`] = `${ward},${subcounty},${county}`;
@@ -107,9 +100,7 @@ const indexPlaces = (countyIndex = 0, subcountyIndex = 0) => {
     }
   });
 
-  // console.log(`places`, places);
-
   return places;
 };
 
-module.exports = { listCounties, listSubCounties, listWards, findPlace, findStrPlace, indexPlaces, checkIsALocation };
+module.exports = { listCounties, listSubCounties, listWards, findPlace, findStrPlace, indexPlaces };
