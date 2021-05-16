@@ -1,6 +1,6 @@
 {
   "name": "places-kenya",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "API listing places in kenya from counties to their wards",
   "main": "index.js",
   "scripts": {
