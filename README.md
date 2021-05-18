@@ -2,7 +2,7 @@
 List the places in kenya from counties to their wards
 
 # Installation
-`npm i places --save`
+`npm i places-kenya --save`
 
 ## Usage
 
